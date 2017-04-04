@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<!-- vo 매핑 -->
+	<typeAliases>
+		<typeAlias type="com.sist.poket.poketmonVO" alias="Poket"/>
+	</typeAliases>
+	
+	<!-- Driver등록, getConnection,disConnection
+		 Driver명, username,password,url -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 
+				transaction(COMMIT,ROLLBACK)
+					1)자동관리(JDBC)
+					2)직접관리(MANAGED)
+			 -->
+			 <transactionManager type="JDBC"/>
+			 <dataSource type="POOLED">
+			 	<!-- JDBC = UNPOOLED 
+			 		 DBCP = POOLED
+			 	-->
+			 	<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+			 	<property name="url" value="jdbc:oracle:thin:@211.238.142.235:1521:ORCL"/>
+			 	<property name="username" value="scott"/>
+			 	<property name="password" value="tiger"/>
+			 </dataSource>
+		</environment>
+	</environments>	 
+	
+	<!-- SQL -->
+	<mappers>
+		<mapper resource="com/sist/poket/poket-mapper.xml"/>
+	</mappers>
+</configuration>

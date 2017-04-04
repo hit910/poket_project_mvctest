@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.sist.dao.poket-mapper">
+	<sql id="where-no">
+		WHERE no=#{no}
+	</sql>
+	
+	<select id="bookList" resultType="Poket">
+		SELECT * FROM p_table ORDER BY no ASC
+	</select>
+	
+	<select id="detailBook" resultType="Poket" parameterType="int">
+		SELECT no,name,rev1,rev2,rev3,type1,type2,s_type1,s_type2,l_type1,l_type2 FROM p_table 
+		<include refid="where-no"></include>
+	</select>
+	
+<!-- 	<select id="boardListData" resultType="Board" parameterType="java.util.Map">
+		SELECT no,subject,name,regdate,hit,group_tab,num
+		FROM (SELECT no,subject,name,regdate,hit,group_tab,rownum as num
+		FROM (SELECT no,subject,name,regdate,hit,group_tab
+		FROM replyBoard ORDER BY group_id DESC,group_step ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="boardTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/10) FROM replyBoard
+	</select>
+	
+	<update id="hitIncrement" parameterType="int">
+		UPDATE replyBoard SET 
+		hit = hit+1
+		<include refid="where-no"/>
+	</update>
+	
+	<select id="contentData" resultType="Board" parameterType="int">
+		SELECT * FROM replyBoard 
+		<include refid="where-no"/>
+	</select> -->
+
+</mapper>  
+
+
+
+
+
+
+
+
+
